@@ -6,6 +6,22 @@
 <body>
 <h1>PCPartPicker Tool</h1>
 
+<!-- Add this to your existing HTML form -->
+<form id="cpuForm">
+    <label for="cpuName">CPU Name:</label>
+    <input type="text" id="cpuName" name="cpuName" required>
+    <input type="text" id="cpuPrice" name="cpuPrice" required>
+    <input type="text" id="cpuSocket" name="cpuSocket" required>
+    <input type="text" id="cpuFreq" name="cpuFreq" required>
+    <input type="text" id="cpuBrand" name="cpuBrand" required>
+    <input type="text" id="ebayLink" name="ebayLink" required>
+
+    <!-- Add similar fields for socket, brand, etc. -->
+
+    <button type="button" onclick="addCpu()">Add CPU</button>
+</form>
+
+
 <!-- Form to Add Elements -->
 <form id="partForm">
     <label for="partName">Part Name:</label>
