@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Pecker Picker Tool</title>
 </head>
@@ -18,12 +18,15 @@
     </tr>
 </table>
 
-<h1>CPU List</h1>
-
-<div id="cpuContainer">
-    <p></p>
-</div>
-
-<script src="/js/admin.js"></script>
+<h2>Add New CPU</h2>
+<form action="#" th:action="@{/cpus}" method="post">
+    <p>Name: <input type="text" name="name"/></p>
+    <p>Price: <input type="number" name="price"/></p>
+    <p>Socket: <input type="text" name="socket"/></p>
+    <p>Frequency: <input type="text" name="frequency"/></p>
+    <p>Brand: <input type="text" name="brand"/></p>
+    <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+    <p><input type="submit" value="Add CPU"/></p>
+</form>
 </body>
 </html>

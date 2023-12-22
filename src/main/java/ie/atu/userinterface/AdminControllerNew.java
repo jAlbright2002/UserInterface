@@ -5,9 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,17 +26,15 @@ public class AdminControllerNew {
     }
 
     @PostMapping("/cpus")
-    public String addCPU(@RequestBody CPU cpu) {
+    public String createCPU(@ModelAttribute CPU cpu) {
         hardwareServiceNew.saveCPU(cpu);
-        return "admin";
+        return "redirect:/admin";
     }
 
     @GetMapping("/cpus")
-    public ResponseEntity<?> getCpuNames() {
-        List<CPU> cpuNames = hardwareServiceNew.getCPU(null, null, null);
-
-        return ResponseEntity.ok("awsd");
-
+    public String getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price) {
+        List<CPU> CPUs = hardwareServiceNew.getCPU(name, brand, price);
+        return "redirect:/admin";
     }
 
 }
