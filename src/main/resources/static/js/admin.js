@@ -1,25 +1,3 @@
-function addPart() {
-    var partName = document.getElementById('partName').value;
-
-    // Check if partName is not empty
-    if (partName.trim() !== '') {
-        var partContainer = document.getElementById('partContainer');
-
-        // Create a new div element
-        var newPartDiv = document.createElement('div');
-
-        // Set the content of the new div
-        newPartDiv.innerHTML = partName;
-
-        // Optionally, you can add additional HTML structure or styling to newPartDiv
-
-        // Append the new div to the partContainer
-        partContainer.appendChild(newPartDiv);
-
-        // Clear the input field
-        document.getElementById('partName').value = '';
-    }
-}
 
 function addCpu() {
     // Retrieve form data
@@ -64,3 +42,38 @@ function addCpu() {
             // Handle error if needed
         });
 }
+
+var cpuContainer = document.getElementById('cpuContainer');
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Your JavaScript code here
+    updateCpuNames();
+});
+
+async function updateCpuNames() {
+    try {
+        // Introduce a delay of 500 milliseconds using a Promise and setTimeout
+        await new Promise(resolve => setTimeout(resolve, 250));
+
+        const response = await fetch('/cpus');
+        const data = await response.json();
+
+        // Assuming data is an array of CPU names
+        displayCpuNames(data);
+    } catch (error) {
+        console.error('Error fetching CPU names:', error);
+    }
+}
+
+function displayCpuNames(cpuNames) {
+    // Assuming cpuContainer is a valid DOM element
+    cpuContainer.innerHTML = ''; // Clear previous content
+
+    // Iterate through the CPU names and append them to cpuContainer
+    cpuNames.forEach(cpuName => {
+        var p = document.createElement('p');
+        p.textContent = cpuName;
+        cpuContainer.appendChild(p);
+    });
+}
+

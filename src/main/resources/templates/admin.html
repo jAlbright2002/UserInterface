@@ -18,20 +18,13 @@
 
     <!-- Add similar fields for socket, brand, etc. -->
 
-    <button type="button" onclick="addCpu()">Add CPU</button>
+    <button type="button" id="btn" onclick="addCpu(); updateCpuNames()">Add CPU</button>
 </form>
 
+<h1>CPU List</h1>
 
-<!-- Form to Add Elements -->
-<form id="partForm">
-    <label for="partName">Part Name:</label>
-    <input type="text" id="partName" name="partName" required>
-    <button type="button" onclick="addPart()">Add Part</button>
-</form>
-
-<!-- Container for Added Elements -->
-<div id="partContainer">
-    <!-- Elements will be added here -->
+<div id="cpuContainer">
+    <p></p>
 </div>
 
 <script src="/js/admin.js"></script>
