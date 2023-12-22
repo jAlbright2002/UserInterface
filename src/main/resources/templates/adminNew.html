@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pecker Picker Tool</title>
+</head>
+<body>
+<h1>Pecker Picker Tool</h1>
+
+<!-- Add this to your existing HTML form -->
+<table>
+    <tr>
+        <th>CPU NAME</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="cpu : ${CPUs}">
+        <td th:text="${cpu.name}">Product Name</td>
+        <td th:text="${cpu.price}">Product Price</td>
+    </tr>
+</table>
+
+<h1>CPU List</h1>
+
+<div id="cpuContainer">
+    <p></p>
+</div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>

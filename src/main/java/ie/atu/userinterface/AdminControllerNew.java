@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,34 +12,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @Controller
-public class AdminController {
+public class AdminControllerNew {
 // test
-    private final HardwareService hardwareService;
+    private final HardwareServiceNew hardwareServiceNew;
 
     @Autowired
-    public AdminController(HardwareService hardwareService) {
-        this.hardwareService = hardwareService;
+    public AdminControllerNew(HardwareServiceNew hardwareServiceNew) {
+        this.hardwareServiceNew = hardwareServiceNew;
     }
 
     @GetMapping("/admin")
-    public String home() {
-        return "admin";
+    public String admin(Model model) {
+        model.addAttribute("CPUs", hardwareServiceNew.getCPU(null, null, null));
+        return "adminNew";
     }
 
     @PostMapping("/cpus")
     public String addCPU(@RequestBody CPU cpu) {
-        hardwareService.addCPU(cpu);
+        hardwareServiceNew.saveCPU(cpu);
         return "admin";
     }
 
     @GetMapping("/cpus")
-    public ResponseEntity<List<String>> getCpuNames() {
-        List<String> cpuNames = hardwareService.getCpus();
-        if (!cpuNames.isEmpty()) {
-            return new ResponseEntity<>(cpuNames, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<?> getCpuNames() {
+        List<CPU> cpuNames = hardwareServiceNew.getCPU(null, null, null);
+
+        return ResponseEntity.ok("awsd");
+
     }
 
 }
