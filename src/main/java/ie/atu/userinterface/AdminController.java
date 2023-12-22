@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 public class AdminController {
-
+// test
     private final HardwareService hardwareService;
 
     @Autowired
