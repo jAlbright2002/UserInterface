@@ -2,14 +2,11 @@ package ie.atu.userinterface;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name="hardware", url="http://localhost:8081/hardware")
+@FeignClient(name="hardware", url="http://localhost:8080")
 public interface HardwareClientNew {
     // This communicates with other services and uses the methods below
     @PostMapping("/cpus")
@@ -19,6 +16,9 @@ public interface HardwareClientNew {
     List<CPU> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
 
     //delete
+    @DeleteMapping("/cpus/{id}")
+    ResponseEntity<?> deleteCPU(@PathVariable("id") Long id);
+
     //put
 
     // We will add the same 4 functions for the other components

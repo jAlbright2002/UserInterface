@@ -37,4 +37,10 @@ public class AdminControllerNew {
         return "redirect:/admin";
     }
 
+    @DeleteMapping("/cpus/{id}")
+    public String deleteCPU(@PathVariable("id") Long id) {
+        hardwareServiceNew.deleteCPU(id);
+        return "redirect:/admin";
+    }
+
 }

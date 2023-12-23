@@ -15,6 +15,12 @@
     <tr th:each="cpu : ${CPUs}">
         <td th:text="${cpu.name}">Product Name</td>
         <td th:text="${cpu.price}">Product Price</td>
+        <td>
+            <form th:action="@{/cpus/{id}(id=${cpu.id})}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <button type="submit">Delete CPU</button>
+            </form>
+        </td>
     </tr>
 </table>
 

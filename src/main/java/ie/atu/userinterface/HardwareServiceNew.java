@@ -24,5 +24,6 @@ public class HardwareServiceNew {
         List<CPU> CPUs = hardwareClientNew.getCPUs(name, brand, price);
         return CPUs;
     }
+    public void deleteCPU(Long id) {hardwareClientNew.deleteCPU(id);}
 
 }
