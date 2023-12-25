@@ -23,4 +23,13 @@ public class CPU {
     private String frequency;
     private String brand;
     private String ebaylink;
+
+    public CPU(String name, float price, String socket, String frequency, String brand, String ebaylink) {
+        this.name = name;
+        this.price = price;
+        this.socket = socket;
+        this.frequency = frequency;
+        this.brand = brand;
+        this.ebaylink = ebaylink;
+    }
 }

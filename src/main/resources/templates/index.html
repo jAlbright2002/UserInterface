@@ -18,7 +18,7 @@
     <tbody>
     <tr th:each="component : ${components}">
         <td th:text="${component.componentName}">Component Name</td>
-        <td th:text="${component.component != null ? component.name : 'Empty'}">Selection</td>
+        <td th:text="${component.component != null ? component.component.name : 'Empty'}">Selection</td>
         <td><a th:href="${component.urlSelect}">Select</a></td>
     </tr>
     </tbody>

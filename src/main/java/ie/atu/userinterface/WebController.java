@@ -1,7 +1,6 @@
 package ie.atu.userinterface;
 
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +33,19 @@ public class WebController {
     @GetMapping("/cpus")
     public String getCPUs(Model model) {
         List<CPU> cpus = hardwareServiceNew.getCPU(null, null, null);
-        model.addAttribute("hardwareComponent", cpus);
+
+        model.addAttribute("cpus", cpus);
         return "componentSelection";
     }
+
+    @PostMapping("/select-cpu")
+    public String selectCPU(Long cpuId, Model model, HttpSession httpSession) {
+        //CPU selectedCPU = hardwareServiceNew.getCPUById(cpuId) // Havent implemented the getById here yet
+        CPU selectedCPU = new CPU(cpuId, "cpuname", 200, "lga", "54ghz", "intel", "link.com");
+        httpSession.setAttribute("selectedCPU", selectedCPU);
+        System.out.println("This ran. The selected attribute is: " + httpSession.getAttribute("selectedCPU"));
+
+        return "redirect:/";
+    }
+
 }

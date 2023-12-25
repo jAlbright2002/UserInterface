@@ -5,13 +5,32 @@
     <title>Title</title>
 </head>
 <body>
-<div th:each="comp : ${hardwareComponent}">
-    <div th:text="${comp.name}"></div>
-    <div th:text="${comp.price}"></div>
-    <div th:text="${comp.socket}"></div>
-    <div th:text="${comp.frequency}"></div>
-    <div th:text="${comp.brand}"></div>
-    <div th:text="${comp.ebaylink}"></div>
-</div>
+<form th:action="@{/select-cpu}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Socket</th>
+            <th>Frequency</th>
+            <th>Brand</th>
+            <!--        <th>Buy</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cpu : ${cpus}">
+            <td th:text="${cpu.name}">Name</td>
+            <td th:text="${cpu.price}">Name</td>
+            <td th:text="${cpu.socket}">Name</td>
+            <td th:text="${cpu.frequency}">Name</td>
+            <td th:text="${cpu.brand}">Brand</td>
+            <td>
+                <button type="submit" name="cpuId" th:value="${cpu.id}">Select</button>
+            </td>
+            <!--        <td><a th:href="${cpu.ebaylink}">Buy</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+</form>
 </body>
 </html>
