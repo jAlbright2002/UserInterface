@@ -1,6 +1,7 @@
 package ie.atu.userinterface;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class HardwareServiceNew {
     }
 
     // Communicates with the other service through the Client interface
-    public CPU saveCPU(CPU cpu) {
+    public ResponseEntity<String> saveCPU(CPU cpu) {
         return hardwareClientNew.saveCPU(cpu);
     }
 

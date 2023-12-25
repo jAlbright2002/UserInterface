@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>Component</th>
+        <th>Selection</th>
+        <th>Price</th>
+        <th>Buy</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="component : ${components}">
+        <td th:text="${component.componentName}">Component Name</td>
+        <td th:text="${component.component != null ? component.name : 'Empty'}">Selection</td>
+        <td><a th:href="${component.urlSelect}">Select</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
