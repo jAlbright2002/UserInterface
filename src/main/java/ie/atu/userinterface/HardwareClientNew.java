@@ -1,5 +1,6 @@
 package ie.atu.userinterface;
 
+import ie.atu.userinterface.Hardware.CPU;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,10 @@ public interface HardwareClientNew {
 
     //delete
     @DeleteMapping("/cpus/{id}")
-    ResponseEntity<?> deleteCPU(@PathVariable("id") Long id);
+    ResponseEntity<CPU> deleteCPU(@PathVariable("id") Long id);
+
+    @GetMapping("/cpus/{id}")
+    ResponseEntity<CPU> getCPUById(@PathVariable("id") Long id);
 
     //put
 

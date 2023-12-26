@@ -20,9 +20,9 @@
         <tbody>
         <tr th:each="cpu : ${cpus}">
             <td th:text="${cpu.name}">Name</td>
-            <td th:text="${cpu.price}">Name</td>
-            <td th:text="${cpu.socket}">Name</td>
-            <td th:text="${cpu.frequency}">Name</td>
+            <td th:text="${cpu.price}">Price</td>
+            <td th:text="${cpu.socket}">Socket</td>
+            <td th:text="${cpu.frequency}">Frequency</td>
             <td th:text="${cpu.brand}">Brand</td>
             <td>
                 <button type="submit" name="cpuId" th:value="${cpu.id}">Select</button>

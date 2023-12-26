@@ -1,5 +1,7 @@
-package ie.atu.userinterface;
+package ie.atu.userinterface.User;
 
+import ie.atu.userinterface.Hardware.CPU;
+import ie.atu.userinterface.HardwareServiceNew;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -41,7 +44,9 @@ public class WebController {
     @PostMapping("/select-cpu")
     public String selectCPU(Long cpuId, Model model, HttpSession httpSession) {
         //CPU selectedCPU = hardwareServiceNew.getCPUById(cpuId) // Havent implemented the getById here yet
-        CPU selectedCPU = new CPU(cpuId, "cpuname", 200, "lga", "54ghz", "intel", "link.com");
+        //CPU selectedCPU = new CPU(cpuId, "cpuname", 200, "lga", "54ghz", "intel", Arrays.asList("DDR3"), "link.com");
+        System.out.println("The id is: " + cpuId);
+        CPU selectedCPU = hardwareServiceNew.getCPUById(cpuId);
         httpSession.setAttribute("selectedCPU", selectedCPU);
         System.out.println("This ran. The selected attribute is: " + httpSession.getAttribute("selectedCPU"));
 

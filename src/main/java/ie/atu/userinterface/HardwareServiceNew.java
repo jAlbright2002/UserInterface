@@ -1,13 +1,10 @@
 package ie.atu.userinterface;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import ie.atu.userinterface.Hardware.CPU;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class HardwareServiceNew {
@@ -27,19 +24,10 @@ public class HardwareServiceNew {
         List<CPU> CPUs = hardwareClientNew.getCPUs(name, brand, price);
         return CPUs;
     }
-    public void deleteCPU(Long id) {hardwareClientNew.deleteCPU(id);}
-
-
-    public List<String> determineHeadersForComponent(String component) {
-        List<String> headers = new ArrayList<>();
-
-        if (component.equals("CPU")) {
-            Field[] fields = CPU.class.getDeclaredFields();
-            for (Field field : fields) {
-                headers.add(field.getName());
-            }
-        }
-        return headers;
+    public CPU getCPUById(Long id) {
+        CPU cpu = (CPU) hardwareClientNew.getCPUById(id).getBody();
+        return  cpu;
     }
 
+    public void deleteCPU(Long id) {hardwareClientNew.deleteCPU(id);}
 }
