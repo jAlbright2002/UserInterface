@@ -1,0 +1,7 @@
+### CPU website
+GET http://localhost:8079/cpus
+
+
+###
+GET http://localhost:8079/
+

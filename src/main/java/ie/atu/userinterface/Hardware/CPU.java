@@ -19,4 +19,8 @@ public class CPU {
     private String brand;
     private List<String> compatibleRAMTypes;
     private String ebaylink;
+
+    public String getEbaylink() {
+        return ebaylink;
+    }
 }

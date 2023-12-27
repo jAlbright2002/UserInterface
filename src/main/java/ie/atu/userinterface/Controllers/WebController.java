@@ -1,7 +1,8 @@
-package ie.atu.userinterface.User;
+package ie.atu.userinterface.Controllers;
 
 import ie.atu.userinterface.Hardware.CPU;
 import ie.atu.userinterface.HardwareServiceNew;
+import ie.atu.userinterface.User.HardwareComponent;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +50,8 @@ public class WebController {
         CPU selectedCPU = hardwareServiceNew.getCPUById(cpuId);
         httpSession.setAttribute("selectedCPU", selectedCPU);
         System.out.println("This ran. The selected attribute is: " + httpSession.getAttribute("selectedCPU"));
+//        CPU cpu = (CPU) httpSession.getAttribute("selectedCPU");
+//        System.out.println("ebay url for cpu: " + cpu.getEbaylink());
 
         return "redirect:/";
     }

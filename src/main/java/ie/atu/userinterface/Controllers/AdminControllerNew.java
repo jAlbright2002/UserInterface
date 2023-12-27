@@ -1,4 +1,4 @@
-package ie.atu.userinterface.Admin;
+package ie.atu.userinterface.Controllers;
 
 import ie.atu.userinterface.Hardware.CPU;
 import ie.atu.userinterface.HardwareServiceNew;

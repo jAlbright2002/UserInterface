@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<h1>Not a bad pc-part-picker clone</h1>
+
 <table>
     <thead>
     <tr>
@@ -20,6 +22,7 @@
         <td th:text="${component.componentName}">Component Name</td>
         <td th:text="${component.component != null ? component.component.name : 'Empty'}">Selection</td>
         <td><a th:href="${component.urlSelect}">Select</a></td>
+        <td><a th:href="${component.component != null ? component.component.ebaylink : '/'}">Empty</a></td>
     </tr>
     </tbody>
 </table>

@@ -25,8 +25,7 @@ public class HardwareServiceNew {
         return CPUs;
     }
     public CPU getCPUById(Long id) {
-        CPU cpu = (CPU) hardwareClientNew.getCPUById(id).getBody();
-        return  cpu;
+        return hardwareClientNew.getCPUById(id).getBody();
     }
 
     public void deleteCPU(Long id) {hardwareClientNew.deleteCPU(id);}
