@@ -13,6 +13,13 @@ public class CompatibilityRequest {
     private CPU cpu;
     //private GPU gpu;
     private Motherboard motherboard;
+
+
     //private RAM ram;
     //private Storage storage;
+
+
+    public CompatibilityRequest(CPU cpu) {
+        this.cpu = cpu;
+    }
 }

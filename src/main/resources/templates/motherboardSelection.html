@@ -18,20 +18,21 @@
         </tr>
         </thead>
         <tbody>
-<!--        Ill fix this later-->
-
-
 <!--        <tr th:each="motherboard : ${motherboards}">-->
-<!--            <td th:text="${motherboard.name}">Name</td>-->
-<!--            <td th:text="${motherboard.price}">Price</td>-->
-<!--            <td th:text="${motherboard.brand}">Brand</td>-->
-<!--            <td th:text="${motherboard.socket}">Socket</td>-->
-<!--            <td th:text="${motherboard.ram}">RAM</td>-->
-<!--            <td>-->
-<!--                <button type="submit" name="motherboardId" th:value="${motherboard.id}">Select</button>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;        <td><a th:href="${cpu.ebaylink}">Buy</a></td>&ndash;&gt;-->
+
+<!--            <td th:text="${motherboard}"></td>-->
 <!--        </tr>-->
+        <tr th:each="motherboard : ${motherboards}">
+            <td th:text="${motherboard.name}">Name</td>
+            <td th:text="${motherboard.price}">Price</td>
+            <td th:text="${motherboard.brand}">Brand</td>
+            <td th:text="${motherboard.socket}">Socket</td>
+            <td th:text="${motherboard.compatibleRAMTypes}">RAM</td>
+            <td>
+                <button type="submit" name="motherboardId" th:value="${motherboard.id}">Select</button>
+            </td>
+            <!--        <td><a th:href="${cpu.ebaylink}">Buy</a></td>-->
+        </tr>
         </tbody>
     </table>
 </form>

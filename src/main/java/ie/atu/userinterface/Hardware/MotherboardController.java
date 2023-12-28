@@ -1,5 +1,6 @@
 package ie.atu.userinterface.Hardware;
 
+import ie.atu.userinterface.CPU.CPU;
 import ie.atu.userinterface.CompatibilityRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -20,16 +21,24 @@ public class MotherboardController {
 
     //    GET MAPPING
     @GetMapping("/motherboards")
-    public String getMotherboards(Model model, @RequestBody(required = false) CompatibilityRequest compatibilityRequest) {
-        compatibilityRequest = new CompatibilityRequest();
+    public String getMotherboards(Model model, HttpSession httpSession) {
+        // Try to get the attributes, some could have been set]
+        CompatibilityRequest compatibilityRequest = new CompatibilityRequest(
+                (CPU) httpSession.getAttribute("selectedCPU")
+        );
+
+
         List<Motherboard> motherboards = motherboardService.getMotherboards(compatibilityRequest);
+        motherboards.forEach(motherboard -> {
+            System.out.println(motherboard.getName());
+        });
         model.addAttribute("motherboards", motherboards);
         return "motherboardSelection";
     }
 
 
-//    POST MAPPING
-    @PostMapping("/select-motherboards")
+    //    POST MAPPING
+    @PostMapping("/select-motherboard")
     public String selectMotherboard(Long motherboardId, Model model, HttpSession httpSession) {
         Motherboard selectedMotherboard = motherboardService.getMotherboardById(motherboardId);
         httpSession.setAttribute("selectedMotherboard", selectedMotherboard);
