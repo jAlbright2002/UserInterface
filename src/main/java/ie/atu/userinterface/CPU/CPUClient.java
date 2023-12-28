@@ -11,7 +11,7 @@ public interface CPUClient {
 
     //    GET MAPPINGS
     @GetMapping("/cpus")
-    List<CPU> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+    ResponseEntity<List<CPU>> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
 
     @GetMapping("/cpus/{id}")
     ResponseEntity<CPU> getCPUById(@PathVariable("id") Long id);

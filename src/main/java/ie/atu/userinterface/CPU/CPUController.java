@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -31,7 +30,7 @@ public class CPUController {
     @PostMapping("/select-cpu")
     public String selectCPU(Long cpuId, Model model, HttpSession httpSession) {
         System.out.println("The id is: " + cpuId);
-        CPU selectedCPU = cpuService.getCPUById(cpuId);
+        CPU selectedCPU = cpuService.getCPUById(cpuId).getFirst();
         httpSession.setAttribute("selectedCPU", selectedCPU);
         System.out.println("This ran. The selected attribute is: " + httpSession.getAttribute("selectedCPU"));
         return "redirect:/";
