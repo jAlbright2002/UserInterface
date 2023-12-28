@@ -1,7 +1,7 @@
 package ie.atu.userinterface.Controllers;
 
-import ie.atu.userinterface.Hardware.CPU;
-import ie.atu.userinterface.HardwareServiceNew;
+import ie.atu.userinterface.CPU.CPU;
+import ie.atu.userinterface.BusinessLogic.HardwareServiceNew;
 import ie.atu.userinterface.User.HardwareComponent;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller

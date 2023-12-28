@@ -1,4 +1,4 @@
-package ie.atu.userinterface.Hardware;
+package ie.atu.userinterface.CPU;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,8 +19,4 @@ public class CPU {
     private String brand;
     private List<String> compatibleRAMTypes;
     private String ebaylink;
-
-    public String getEbaylink() {
-        return ebaylink;
-    }
 }

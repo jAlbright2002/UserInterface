@@ -1,6 +1,7 @@
-package ie.atu.userinterface;
+package ie.atu.userinterface.BusinessLogic;
 
-import ie.atu.userinterface.Hardware.CPU;
+import ie.atu.userinterface.FeignClient.HardwareClientNew;
+import ie.atu.userinterface.CPU.CPU;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

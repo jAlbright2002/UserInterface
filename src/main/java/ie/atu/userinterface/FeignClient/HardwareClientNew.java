@@ -1,6 +1,6 @@
-package ie.atu.userinterface;
+package ie.atu.userinterface.FeignClient;
 
-import ie.atu.userinterface.Hardware.CPU;
+import ie.atu.userinterface.CPU.CPU;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
