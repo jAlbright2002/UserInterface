@@ -1,4 +1,4 @@
-package ie.atu.userinterface.BusinessLogic;
+package ie.atu.userinterface.Web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
