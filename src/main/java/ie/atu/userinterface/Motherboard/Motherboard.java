@@ -1,6 +1,5 @@
-package ie.atu.userinterface.Hardware;
+package ie.atu.userinterface.Motherboard;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

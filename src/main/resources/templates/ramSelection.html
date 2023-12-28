@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form th:action="@{/select-ram}" method="post">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Socket</th>
+      <th>Frequency</th>
+      <th>Brand</th>
+      <!--        <th>Buy</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ram : ${rams}">
+      <td th:text="${ram.name}">Name</td>
+      <td th:text="${ram.price}">Price</td>
+      <td th:text="${ram.capacity}">Capacity</td>
+      <td th:text="${ram.ramtype}">Frequency</td>
+      <td>
+        <button type="submit" name="ramId" th:value="${ram.id}">Select</button>
+      </td>
+      <!--        <td><a th:href="${ram.ebaylink}">Buy</a></td>-->
+    </tr>
+    </tbody>
+  </table>
+</form>
+</body>
+</html>

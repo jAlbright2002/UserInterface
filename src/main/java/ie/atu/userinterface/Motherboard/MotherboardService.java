@@ -1,9 +1,7 @@
-package ie.atu.userinterface.Hardware;
+package ie.atu.userinterface.Motherboard;
 
 import ie.atu.userinterface.CompatibilityRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -25,7 +23,7 @@ public class MotherboardService {
         return motherboards;
     }
 
-    public Motherboard getMotherboardById(Long id) {
+    public List<Motherboard> getMotherboardById(Long id) {
         return motherboardHardwareClient.getMotherboardById(id).getBody();
     }
 

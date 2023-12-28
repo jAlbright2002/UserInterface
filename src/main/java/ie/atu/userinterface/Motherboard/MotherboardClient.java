@@ -1,9 +1,7 @@
-package ie.atu.userinterface.Hardware;
+package ie.atu.userinterface.Motherboard;
 
 import ie.atu.userinterface.CompatibilityRequest;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

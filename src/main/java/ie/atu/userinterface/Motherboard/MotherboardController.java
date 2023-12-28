@@ -1,4 +1,4 @@
-package ie.atu.userinterface.Hardware;
+package ie.atu.userinterface.Motherboard;
 
 import ie.atu.userinterface.CPU.CPU;
 import ie.atu.userinterface.CompatibilityRequest;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class MotherboardController {
     //    POST MAPPING
     @PostMapping("/select-motherboard")
     public String selectMotherboard(Long motherboardId, Model model, HttpSession httpSession) {
-        Motherboard selectedMotherboard = motherboardService.getMotherboardById(motherboardId);
+        Motherboard selectedMotherboard = motherboardService.getMotherboardById(motherboardId).getFirst();
         httpSession.setAttribute("selectedMotherboard", selectedMotherboard);
         return "redirect:/";
     }
