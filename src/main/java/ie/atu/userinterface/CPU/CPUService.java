@@ -18,7 +18,7 @@ public class CPUService {
 
     // GET METHODS
     public List<CPU> getCPU(String name, String brand, Float price) {
-        List<CPU> CPUs = cpuClient.getCPUs(name, brand, price).getBody();
+        List<CPU> CPUs = cpuHardwareClient.getCPUs(name, brand, price).getBody();
         return CPUs;
     }
 
@@ -26,14 +26,14 @@ public class CPUService {
         return cpuHardwareClient.getCPUById(id).getBody();
     }
 
-    // POST METHODS
-    public ResponseEntity<String> saveCPU(CPU cpu) {
-        return cpuClient.saveCPU(cpu);
-    }
-
-    // DELETE METHODS
-    public void deleteCPU(Long id) {
-        cpuClient.deleteCPU(id);
-    }
+//    // POST METHODS
+//    public ResponseEntity<String> saveCPU(CPU cpu) {
+//        return cpuClient.saveCPU(cpu);
+//    }
+//
+//    // DELETE METHODS
+//    public void deleteCPU(Long id) {
+//        cpuClient.deleteCPU(id);
+//    }
 
 }

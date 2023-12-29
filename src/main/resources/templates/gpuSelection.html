@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/select-gpu}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Socket</th>
+            <th>Frequency</th>
+            <th>Brand</th>
+            <!--        <th>Buy</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="gpu : ${gpus}">
+            <td th:text="${gpu.name}">Name</td>
+            <td th:text="${gpu.price}">Price</td>
+            <td th:text="${gpu.brand}">Brand</td>
+            <td th:text="${gpu.vram}">VRam</td>
+            <td>
+                <button type="submit" name="gpuId" th:value="${gpu.id}">Select</button>
+            </td>
+            <!--        <td><a th:href="${ram.ebaylink}">Buy</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

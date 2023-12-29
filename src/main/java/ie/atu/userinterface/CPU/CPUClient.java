@@ -10,21 +10,21 @@ import java.util.List;
 public interface CPUClient {
 
     //    GET MAPPINGS
-    @GetMapping("/cpus")
-    ResponseEntity<List<CPU>> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+    //@GetMapping("/cpus")
+    //ResponseEntity<List<CPU>> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
 
-    @GetMapping("/cpus/{id}")
-    ResponseEntity<CPU> getCPUById(@PathVariable("id") Long id);
-
-    //    POST MAPPINGS
-    @PostMapping("/cpus")
-    ResponseEntity<String> saveCPU(@RequestBody CPU cpu);
-
-
-    //    DELETE MAPPINGS
-    @DeleteMapping("/cpus/{id}")
-    ResponseEntity<CPU> deleteCPU(@PathVariable("id") Long id);
-
-//    PUT MAPPINGS
+//    @GetMapping("/cpus/{id}")
+//    ResponseEntity<CPU> getCPUById(@PathVariable("id") Long id);
+//
+//    //    POST MAPPINGS
+//    @PostMapping("/cpus")
+//    ResponseEntity<String> saveCPU(@RequestBody CPU cpu);
+//
+//
+//    //    DELETE MAPPINGS
+//    @DeleteMapping("/cpus/{id}")
+//    ResponseEntity<CPU> deleteCPU(@PathVariable("id") Long id);
+//
+////    PUT MAPPINGS
 
 }
