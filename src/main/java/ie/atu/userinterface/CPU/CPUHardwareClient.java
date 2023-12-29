@@ -11,6 +11,10 @@ import java.util.List;
 
 @FeignClient(name = "CPUHardware", url = "http://localhost:8080")
 public interface CPUHardwareClient {
+
+    @GetMapping("/cpus")
+    ResponseEntity<List<CPU>> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+
     @GetMapping("/cpus")
     ResponseEntity<List<CPU>> getCPUById(@RequestParam("id") Long id);
 }
