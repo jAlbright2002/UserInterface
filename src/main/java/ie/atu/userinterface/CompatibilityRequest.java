@@ -22,6 +22,10 @@ public class CompatibilityRequest {
         this.cpu = cpu;
     }
 
+    public CompatibilityRequest(Motherboard motherboard) {
+        this.motherboard = motherboard;
+    }
+
     public CompatibilityRequest(CPU cpu, Motherboard motherboard) {
         this.cpu = cpu;
         this.motherboard = motherboard;
