@@ -1,6 +1,5 @@
 package ie.atu.userinterface.CPU;
 
-import ie.atu.userinterface.User.HardwareComponent;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

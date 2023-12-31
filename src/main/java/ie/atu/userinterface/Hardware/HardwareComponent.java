@@ -1,4 +1,4 @@
-package ie.atu.userinterface.User;
+package ie.atu.userinterface.Hardware;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
