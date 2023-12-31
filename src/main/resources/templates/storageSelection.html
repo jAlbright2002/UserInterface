@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/select-storage}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Capacity</th>
+            <th>Brand</th>
+            <th>Storage Type</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="storage : ${storages}">
+            <td th:text="${storage.name}">Name</td>
+            <td th:text="${storage.price}">Price</td>
+            <td th:text="${storage.capacity}">Capacity</td>
+            <td th:text="${storage.brand}">Brand</td>
+            <td th:text="${storage.storageType}">Storage Type</td>
+            <td>
+                <button type="submit" name="storageId" th:value="${storage.id}">Select</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
