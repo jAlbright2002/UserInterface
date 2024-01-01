@@ -1,4 +1,4 @@
-package ie.atu.userinterface;
+package ie.atu.userinterface.Compatibility;
 
 import ie.atu.userinterface.CPU.CPU;
 import ie.atu.userinterface.Motherboard.Motherboard;

@@ -1,13 +1,11 @@
 package ie.atu.userinterface.Web;
 
-import ie.atu.userinterface.Hardware.HardwareComponent;
+import ie.atu.userinterface.Admin.Admin;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;

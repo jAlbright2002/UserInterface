@@ -1,9 +1,7 @@
 package ie.atu.userinterface.Storage;
 
-import ie.atu.userinterface.CPU.CPU;
-import ie.atu.userinterface.CompatibilityRequest;
+import ie.atu.userinterface.Compatibility.CompatibilityRequest;
 import ie.atu.userinterface.Motherboard.Motherboard;
-import ie.atu.userinterface.Motherboard.MotherboardService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Admin {
-    private String username;
-    private String password;
+public class HardwareComponent {
+    private String componentName;
+    private Object component;
+    private String urlSelect;
 }

@@ -1,10 +1,5 @@
 package ie.atu.userinterface.GPU;
 
-import ie.atu.userinterface.CPU.CPU;
-import ie.atu.userinterface.CompatibilityRequest;
-import ie.atu.userinterface.Motherboard.Motherboard;
-import ie.atu.userinterface.RAM.RAM;
-import ie.atu.userinterface.RAM.RAMService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
