@@ -1,7 +1,7 @@
 package ie.atu.userinterface.RAM;
 
 import ie.atu.userinterface.CPU.CPU;
-import ie.atu.userinterface.CompatibilityRequest;
+import ie.atu.userinterface.Compatibility.CompatibilityRequest;
 import ie.atu.userinterface.Motherboard.Motherboard;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;

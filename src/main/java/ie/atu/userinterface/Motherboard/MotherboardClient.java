@@ -1,6 +1,6 @@
 package ie.atu.userinterface.Motherboard;
 
-import ie.atu.userinterface.CompatibilityRequest;
+import ie.atu.userinterface.Compatibility.CompatibilityRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

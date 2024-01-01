@@ -1,9 +1,6 @@
 package ie.atu.userinterface.Storage;
 
-import ie.atu.userinterface.CompatibilityRequest;
-import ie.atu.userinterface.Motherboard.Motherboard;
-import ie.atu.userinterface.Motherboard.MotherboardClient;
-import ie.atu.userinterface.Motherboard.MotherboardHardwareClient;
+import ie.atu.userinterface.Compatibility.CompatibilityRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 

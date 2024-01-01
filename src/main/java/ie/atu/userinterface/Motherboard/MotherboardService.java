@@ -1,6 +1,6 @@
 package ie.atu.userinterface.Motherboard;
 
-import ie.atu.userinterface.CompatibilityRequest;
+import ie.atu.userinterface.Compatibility.CompatibilityRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
