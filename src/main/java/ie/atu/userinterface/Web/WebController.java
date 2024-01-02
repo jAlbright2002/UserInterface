@@ -13,12 +13,6 @@ import java.util.List;
 
 @Controller
 public class WebController {
-    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    private final WebService webService;
-
-    public WebController(WebService webService) {
-        this.webService = webService;
-    }
 
     @GetMapping("/")
     public String index(Model model, HttpSession httpSession) {
@@ -31,12 +25,5 @@ public class WebController {
 
         model.addAttribute("components", components);
         return "index";
-    }
-
-    // For testing
-    @GetMapping("/log")
-    public String sendTestDataToLogin() {
-        Admin adminMock = new Admin("James", "myPassword");
-        return webService.sendMock(adminMock);
     }
 }

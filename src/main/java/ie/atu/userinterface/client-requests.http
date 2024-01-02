@@ -5,3 +5,5 @@ GET http://localhost:8079/cpus
 ###
 GET http://localhost:8079/
 
+### Test log
+GET https://localhost:8079/log
