@@ -1,13 +1,15 @@
-package ie.atu.userinterface.Web;
+package ie.atu.userinterface.Login;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class Admin {
+public class User {
+
     private String username;
     private String password;
+
 }
