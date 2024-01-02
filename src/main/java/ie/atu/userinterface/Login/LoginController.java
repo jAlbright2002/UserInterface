@@ -16,16 +16,6 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @PostMapping("/login")
-    public String authenticate(User user) {
-        if (loginService.authenticate(user).equals("Admin authenticated successfully")) {
-            return "redirect:/";
-        } else {
-            return "redirect:/loginPage";
-        }
-
-    }
-
     @PostMapping("/loginPage")
     public String login(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
         // Process the username and password as needed
