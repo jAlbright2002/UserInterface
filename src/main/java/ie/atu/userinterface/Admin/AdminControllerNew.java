@@ -2,6 +2,7 @@ package ie.atu.userinterface.Admin;
 
 import ie.atu.userinterface.CPU.CPU;
 import ie.atu.userinterface.CPU.CPUService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,8 @@ public class AdminControllerNew {
     }
 
     @GetMapping("/")
-    public String admin(Model model) {
+    public String admin(Model model, HttpSession httpSession) {
+        if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
         model.addAttribute("CPUs", cpuService.getCPU(null, null, null));
         return "admin";
     }

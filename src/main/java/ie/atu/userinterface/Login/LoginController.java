@@ -18,18 +18,15 @@ public class LoginController {
 
     @PostMapping("/loginPage")
     public String login(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
-        // Process the username and password as needed
-        // For example, you can store them in the session or pass them to the service layer
 
         User user = new User(username, password);
 
         if (loginService.authenticate(user).equals("Admin authenticated successfully")) {
             httpSession.setAttribute("loggedIn", true);
-            return "redirect:/";
+            return "redirect:/admin";
         } else {
             return "redirect:/loginPage";
         }
-        // Store in session for demonstration purposes
 
     }
 
