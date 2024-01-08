@@ -14,5 +14,5 @@ public interface GPUHardwareClient {
     ResponseEntity<List<GPU>> getGPUById(@RequestParam("id") Long id);
 
     @GetMapping("/gpus")
-    ResponseEntity<List<GPU>> getGPUs();
+    ResponseEntity<List<GPU>> getGPUs(@RequestParam(required = false) String name, @RequestParam(required = false) String brand, @RequestParam(required = false) Float price);
 }

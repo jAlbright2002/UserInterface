@@ -13,8 +13,12 @@ public class GPUService {
     }
 
     //    GET METHODS
-    List<GPU> getGPUs() {
-        return gpuHardwareClient.getGPUs().getBody();
+    public List<GPU> getGPU(String name, String brand, Float price) {
+        return gpuHardwareClient.getGPUs(name, brand, price).getBody();
+    }
+
+    List<GPU> getGPUs(String name, String brand, Float price) {
+        return gpuHardwareClient.getGPUs(name, brand, price).getBody();
     }
 
     public List<GPU> getGpuById(Long id) {

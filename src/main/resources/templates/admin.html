@@ -15,32 +15,156 @@ Hide/Show depending on which button pressed
 No need for 5+ html files then, plus repetitive code reduced
 
 -->
-<table>
-    <tr>
-        <th>CPU NAME</th>
-        <th>Price</th>
-    </tr>
-    <tr th:each="cpu : ${CPUs}">
-        <td th:text="${cpu.name}">Product Name</td>
-        <td th:text="${cpu.price}">Product Price</td>
-        <td>
-            <form th:action="@{/cpus/{id}(id=${cpu.id})}" method="post">
-                <input type="hidden" name="_method" value="DELETE"/>
-                <button type="submit">Delete CPU</button>
-            </form>
-        </td>
-    </tr>
-</table>
 
-<h2>Add New CPU</h2>
-<form action="#" th:action="@{/cpus}" method="post">
-    <p>Name: <input type="text" name="name"/></p>
-    <p>Price: <input type="number" name="price"/></p>
-    <p>Socket: <input type="text" name="socket"/></p>
-    <p>Frequency: <input type="text" name="frequency"/></p>
-    <p>Brand: <input type="text" name="brand"/></p>
-    <p>Ebay Link: <input type="text" name="ebaylink"/></p>
-    <p><input type="submit" value="Add CPU"/></p>
-</form>
+<div th:if="${componentSelected} == 'CPU'">
+    <table>
+        <tr>
+            <th>CPU NAME</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="cpu : ${CPUs}">
+            <td th:text="${cpu.name}">Product Name</td>
+            <td th:text="${cpu.price}">Product Price</td>
+            <td>
+                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <button type="submit">Delete CPU</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Add New CPU</h2>
+    <form action="#" th:action="@{/admin/cpus}" method="post">
+        <p>Name: <input type="text" name="name"/></p>
+        <p>Price: <input type="number" name="price"/></p>
+        <p>Socket: <input type="text" name="socket"/></p>
+        <p>Frequency: <input type="text" name="frequency"/></p>
+        <p>Brand: <input type="text" name="brand"/></p>
+        <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+        <p><input type="submit" value="Add CPU"/></p>
+    </form>
+</div>
+
+<div th:if="${componentSelected} == 'GPU'">
+    <table>
+        <tr>
+            <th>GPU NAME</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="gpu : ${GPUs}">
+            <td th:text="${gpu.name}">Product Name</td>
+            <td th:text="${gpu.price}">Product Price</td>
+            <td>
+                <form th:action="@{/admin/gpus/{id}(id=${gpu.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <button type="submit">Delete GPU</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Add New GPU</h2>
+    <form action="#" th:action="@{/admin/gpus}" method="post">
+        <p>Name: <input type="text" name="name"/></p>
+        <p>Price: <input type="number" name="price"/></p>
+        <p>Brand: <input type="text" name="brand"/></p>
+        <p>VRAM: <input type="text" name="vram"/></p>
+        <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+        <p><input type="submit" value="Add GPU"/></p>
+    </form>
+</div>
+
+<div th:if="${componentSelected} == 'Motherboard'">
+    <table>
+        <tr>
+            <th>Motherboard NAME</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="motherboard : ${Motherboards}">
+            <td th:text="${motherboard.name}">Product Name</td>
+            <td th:text="${motherboard.price}">Product Price</td>
+            <td>
+                <form th:action="@{/admin/motherboards/{id}(id=${cpu.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <button type="submit">Delete Motherboard</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Add New Motherboard</h2>
+    <form action="#" th:action="@{/admin/motherboard}" method="post">
+        <p>Name: <input type="text" name="name"/></p>
+        <p>Price: <input type="number" name="price"/></p>
+        <p>Brand: <input type="text" name="socket"/></p>
+        <p>Socket: <input type="text" name="socket"/></p>
+        <p>Chipset: <input type="text" name="socket"/></p>
+        <p>Compatible Ram Types: <input type="text" name="frequency"/></p>
+        <p>Brand: <input type="text" name="brand"/></p>
+        <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+        <p><input type="submit" value="Add CPU"/></p>
+    </form>
+</div>
+
+<div th:if="${componentSelected} == 'RAM'">
+    <table>
+        <tr>
+            <th>CPU NAME</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="cpu : ${CPUs}">
+            <td th:text="${cpu.name}">Product Name</td>
+            <td th:text="${cpu.price}">Product Price</td>
+            <td>
+                <form th:action="@{/cpus/{id}(id=${cpu.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <button type="submit">Delete CPU</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Add New CPU</h2>
+    <form action="#" th:action="@{/cpus}" method="post">
+        <p>Name: <input type="text" name="name"/></p>
+        <p>Price: <input type="number" name="price"/></p>
+        <p>Socket: <input type="text" name="socket"/></p>
+        <p>Frequency: <input type="text" name="frequency"/></p>
+        <p>Brand: <input type="text" name="brand"/></p>
+        <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+        <p><input type="submit" value="Add CPU"/></p>
+    </form>
+</div>
+
+<div th:if="${componentSelected} == 'Storage'">
+    <table>
+        <tr>
+            <th>CPU NAME</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="cpu : ${CPUs}">
+            <td th:text="${cpu.name}">Product Name</td>
+            <td th:text="${cpu.price}">Product Price</td>
+            <td>
+                <form th:action="@{/cpus/{id}(id=${cpu.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <button type="submit">Delete CPU</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Add New CPU</h2>
+    <form action="#" th:action="@{/cpus}" method="post">
+        <p>Name: <input type="text" name="name"/></p>
+        <p>Price: <input type="number" name="price"/></p>
+        <p>Socket: <input type="text" name="socket"/></p>
+        <p>Frequency: <input type="text" name="frequency"/></p>
+        <p>Brand: <input type="text" name="brand"/></p>
+        <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+        <p><input type="submit" value="Add CPU"/></p>
+    </form>
+</div>
 </body>
 </html>

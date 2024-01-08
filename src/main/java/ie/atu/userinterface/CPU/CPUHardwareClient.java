@@ -11,7 +11,7 @@ import java.util.List;
 public interface CPUHardwareClient {
 
     @GetMapping("/cpus")
-    ResponseEntity<List<CPU>> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+    ResponseEntity<List<CPU>> getCPUs(@RequestParam(required = false) String name, @RequestParam(required = false) String brand, @RequestParam(required = false) Float price);
 
     @GetMapping("/cpus")
     ResponseEntity<List<CPU>> getCPUById(@RequestParam("id") Long id);
