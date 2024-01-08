@@ -15,8 +15,22 @@ Hide/Show depending on which button pressed
 No need for 5+ html files then, plus repetitive code reduced
 
 -->
+<form action="/admin/radial" method="post">
+    <input type="radio" id="1" name="selectedOption" value="CPUs">
+    <label for="1">CPUs</label>
+    <input type="radio" id="2" name="selectedOption" value="GPUs">
+    <label for="2">GPUs</label>
+    <input type="radio" id="3" name="selectedOption" value="Motherboards">
+    <label for="3">Motherboards</label>
+    <input type="radio" id="4" name="selectedOption" value="RAMs">
+    <label for="4">RAMs</label>
+    <input type="radio" id="5" name="selectedOption" value="Storages">
+    <label for="5">Storages</label>
 
-<div th:if="${componentSelected} == 'CPU'">
+    <button type="submit">Request</button>
+</form>
+
+<div th:if="${componentSelected} == 'CPUs'">
     <table>
         <tr>
             <th>CPU NAME</th>
@@ -46,7 +60,7 @@ No need for 5+ html files then, plus repetitive code reduced
     </form>
 </div>
 
-<div th:if="${componentSelected} == 'GPU'">
+<div th:if="${componentSelected} == 'GPUs'">
     <table>
         <tr>
             <th>GPU NAME</th>
@@ -75,7 +89,7 @@ No need for 5+ html files then, plus repetitive code reduced
     </form>
 </div>
 
-<div th:if="${componentSelected} == 'Motherboard'">
+<div th:if="${componentSelected} == 'Motherboards'">
     <table>
         <tr>
             <th>Motherboard NAME</th>
@@ -85,7 +99,7 @@ No need for 5+ html files then, plus repetitive code reduced
             <td th:text="${motherboard.name}">Product Name</td>
             <td th:text="${motherboard.price}">Product Price</td>
             <td>
-                <form th:action="@{/admin/motherboards/{id}(id=${cpu.id})}" method="post">
+                <form th:action="@{/admin/motherboards/{id}(id=${motherboard.id})}" method="post">
                     <input type="hidden" name="_method" value="DELETE"/>
                     <button type="submit">Delete Motherboard</button>
                 </form>
@@ -97,73 +111,72 @@ No need for 5+ html files then, plus repetitive code reduced
     <form action="#" th:action="@{/admin/motherboard}" method="post">
         <p>Name: <input type="text" name="name"/></p>
         <p>Price: <input type="number" name="price"/></p>
-        <p>Brand: <input type="text" name="socket"/></p>
-        <p>Socket: <input type="text" name="socket"/></p>
-        <p>Chipset: <input type="text" name="socket"/></p>
-        <p>Compatible Ram Types: <input type="text" name="frequency"/></p>
         <p>Brand: <input type="text" name="brand"/></p>
+        <p>Socket: <input type="text" name="socket"/></p>
+        <p>Chipset: <input type="text" name="chipset"/></p>
+        <p>Compatible Ram Types: <input type="text" name="compatibleRAMTypes"/></p>
+        <p>Compatible Storage Types: <input type="text" name="compatibleStorageTypes"/></p>
         <p>Ebay Link: <input type="text" name="ebaylink"/></p>
-        <p><input type="submit" value="Add CPU"/></p>
+        <p><input type="submit" value="Add Motherboard"/></p>
     </form>
 </div>
 
-<div th:if="${componentSelected} == 'RAM'">
+<div th:if="${componentSelected} == 'RAMs'">
     <table>
         <tr>
-            <th>CPU NAME</th>
+            <th>RAM NAME</th>
             <th>Price</th>
         </tr>
-        <tr th:each="cpu : ${CPUs}">
-            <td th:text="${cpu.name}">Product Name</td>
-            <td th:text="${cpu.price}">Product Price</td>
+        <tr th:each="ram : ${RAMs}">
+            <td th:text="${ram.name}">Product Name</td>
+            <td th:text="${ram.price}">Product Price</td>
             <td>
-                <form th:action="@{/cpus/{id}(id=${cpu.id})}" method="post">
+                <form th:action="@{/admin/ram/{id}(id=${ram.id})}" method="post">
                     <input type="hidden" name="_method" value="DELETE"/>
-                    <button type="submit">Delete CPU</button>
+                    <button type="submit">Delete RAM</button>
                 </form>
             </td>
         </tr>
     </table>
 
-    <h2>Add New CPU</h2>
-    <form action="#" th:action="@{/cpus}" method="post">
+    <h2>Add New RAM</h2>
+    <form action="#" th:action="@{/admin/rams}" method="post">
         <p>Name: <input type="text" name="name"/></p>
         <p>Price: <input type="number" name="price"/></p>
-        <p>Socket: <input type="text" name="socket"/></p>
-        <p>Frequency: <input type="text" name="frequency"/></p>
-        <p>Brand: <input type="text" name="brand"/></p>
+        <p>Capacity: <input type="text" name="capacitu"/></p>
+        <p>Ram Type: <input type="text" name="ramtype"/></p>
         <p>Ebay Link: <input type="text" name="ebaylink"/></p>
-        <p><input type="submit" value="Add CPU"/></p>
+        <p><input type="submit" value="Add RAM"/></p>
     </form>
 </div>
 
-<div th:if="${componentSelected} == 'Storage'">
+<div th:if="${componentSelected} == 'Storages'">
     <table>
         <tr>
-            <th>CPU NAME</th>
+            <th>Storage NAME</th>
             <th>Price</th>
         </tr>
-        <tr th:each="cpu : ${CPUs}">
-            <td th:text="${cpu.name}">Product Name</td>
-            <td th:text="${cpu.price}">Product Price</td>
+        <tr th:each="storage : ${Storages}">
+            <td th:text="${Storage.name}">Product Name</td>
+            <td th:text="${Storage.price}">Product Price</td>
             <td>
-                <form th:action="@{/cpus/{id}(id=${cpu.id})}" method="post">
+                <form th:action="@{/admin/storages/{id}(id=${storage.id})}" method="post">
                     <input type="hidden" name="_method" value="DELETE"/>
-                    <button type="submit">Delete CPU</button>
+                    <button type="submit">Delete Storage</button>
                 </form>
             </td>
         </tr>
     </table>
 
-    <h2>Add New CPU</h2>
-    <form action="#" th:action="@{/cpus}" method="post">
+    <h2>Add New Storage</h2>
+    <form action="#" th:action="@{/admin/storage}" method="post">
         <p>Name: <input type="text" name="name"/></p>
         <p>Price: <input type="number" name="price"/></p>
-        <p>Socket: <input type="text" name="socket"/></p>
-        <p>Frequency: <input type="text" name="frequency"/></p>
+        <p>Capacity: <input type="text" name="capacity"/></p>
         <p>Brand: <input type="text" name="brand"/></p>
+        <p>Storage Type: <input type="text" name="storageType"/></p>
         <p>Ebay Link: <input type="text" name="ebaylink"/></p>
-        <p><input type="submit" value="Add CPU"/></p>
+        <p><input type="submit" value="Add Storage"/></p>
     </form>
 </div>
 </body>

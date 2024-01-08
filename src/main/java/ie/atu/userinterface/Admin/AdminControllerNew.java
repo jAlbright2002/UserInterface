@@ -29,7 +29,8 @@ public class AdminControllerNew {
     public String admin(Model model, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
         model.addAttribute("CPUs", cpuService.getCPU(null, null, null));
-        model.addAttribute("componentSelected", "CPU");
+        System.out.println(httpSession.getAttribute("selectedOption"));
+        model.addAttribute("componentSelected", httpSession.getAttribute("selectedOption"));
         return "admin";
     }
 
@@ -93,4 +94,10 @@ public class AdminControllerNew {
         return "redirect:/admin";
     }
 
+    @PostMapping("/radial")
+    public String radial(@RequestParam("selectedOption") String selectedOption, Model mode,  HttpSession httpSession) {
+        httpSession.setAttribute("selectedOption", selectedOption);
+        System.out.println(httpSession.getAttribute("selectedOption"));
+        return "redirect:/admin";
+    }
 }
