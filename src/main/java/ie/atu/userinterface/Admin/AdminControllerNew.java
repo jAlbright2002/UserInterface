@@ -21,7 +21,7 @@ public class AdminControllerNew {
         this.cpuService = cpuService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String admin(Model model, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
         model.addAttribute("CPUs", cpuService.getCPU(null, null, null));
