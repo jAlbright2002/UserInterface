@@ -43,31 +43,41 @@ public class AdminControllerNew {
 
     @GetMapping
     public String admin(Model model, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
 
         String selectedOption = (String) httpSession.getAttribute("selectedOption");
+        String currentForm = (String) httpSession.getAttribute("currentForm");
 
         //Add a null check for selectedOption
         if (selectedOption == null) {
             selectedOption = "CPUs";
         }
+        if (currentForm == null) {
+            currentForm = "create";
+        }
+        model.addAttribute("currentForm", currentForm);
 
         // Use a switch-case based on the selectedOption
         switch (selectedOption) {
             case "CPUs":
                 model.addAttribute("CPUs", cpuService.getCPU(null, null, null));
+                if (httpSession.getAttribute("currentForm") == "update") model.addAttribute("selectedCPU", httpSession.getAttribute("selectedCPU"));
                 break;
             case "GPUs":
                 model.addAttribute("GPUs", gpuService.getGPU(null, null, null));
+                if (httpSession.getAttribute("currentForm") == "update") model.addAttribute("selectedGPU", httpSession.getAttribute("selectedGPU"));
                 break;
             case "Motherboards":
                 model.addAttribute("Motherboards", motherboardService.getMotherboards(null, null, null));
+                if (httpSession.getAttribute("currentForm") == "update") model.addAttribute("selectedMotherboard", httpSession.getAttribute("selectedMotherboard"));
                 break;
             case "RAMs":
                 model.addAttribute("RAMs", ramService.getRAM(null, null, null));
+                if (httpSession.getAttribute("currentForm") == "update") model.addAttribute("selectedRAM", httpSession.getAttribute("selectedRAM"));
                 break;
             case "Storages":
                 model.addAttribute("Storages", storageService.getStorage(null, null, null));
+                if (httpSession.getAttribute("currentForm") == "update") model.addAttribute("selectedStorage", httpSession.getAttribute("selectedStorage"));
                 break;
 
             default:
@@ -112,13 +122,6 @@ public class AdminControllerNew {
         cpuService.deleteCPU(id);
         return "redirect:/admin";
     }
-
-//    @PutMapping("/cpus/{id}")
-//    public String editCPU(@PathVariable("id") Long id, @ModelAttribute CPU cpu, HttpSession httpSession) {
-//        if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
-//        cpuService.editCPU(id, cpu);
-//        return "redirect:/admin";
-//    }
 
     @PostMapping("/cpus/update")
     public String editCPU2(@RequestParam(name = "id") Long id, @ModelAttribute CPU cpu, HttpSession httpSession) {

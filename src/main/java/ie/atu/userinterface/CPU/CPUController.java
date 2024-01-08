@@ -35,10 +35,4 @@ public class CPUController {
         return "redirect:/";
     }
 
-//    DELETE MAPPINGS
-
-
-//    PUT MAPPINGS
-
-
 }
