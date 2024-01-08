@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Pecker Picker Tool</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 <h1>Pecker Picker Tool</h1>
@@ -108,7 +109,7 @@ No need for 5+ html files then, plus repetitive code reduced
     </table>
 
     <h2>Add New Motherboard</h2>
-    <form action="#" th:action="@{/admin/motherboard}" method="post">
+    <form action="#" th:action="@{/admin/motherboards}" method="post">
         <p>Name: <input type="text" name="name"/></p>
         <p>Price: <input type="number" name="price"/></p>
         <p>Brand: <input type="text" name="brand"/></p>
@@ -131,7 +132,7 @@ No need for 5+ html files then, plus repetitive code reduced
             <td th:text="${ram.name}">Product Name</td>
             <td th:text="${ram.price}">Product Price</td>
             <td>
-                <form th:action="@{/admin/ram/{id}(id=${ram.id})}" method="post">
+                <form th:action="@{/admin/rams/{id}(id=${ram.id})}" method="post">
                     <input type="hidden" name="_method" value="DELETE"/>
                     <button type="submit">Delete RAM</button>
                 </form>
@@ -157,8 +158,8 @@ No need for 5+ html files then, plus repetitive code reduced
             <th>Price</th>
         </tr>
         <tr th:each="storage : ${Storages}">
-            <td th:text="${Storage.name}">Product Name</td>
-            <td th:text="${Storage.price}">Product Price</td>
+            <td th:text="${storage.name}">Product Name</td>
+            <td th:text="${storage.price}">Product Price</td>
             <td>
                 <form th:action="@{/admin/storages/{id}(id=${storage.id})}" method="post">
                     <input type="hidden" name="_method" value="DELETE"/>
@@ -169,7 +170,7 @@ No need for 5+ html files then, plus repetitive code reduced
     </table>
 
     <h2>Add New Storage</h2>
-    <form action="#" th:action="@{/admin/storage}" method="post">
+    <form action="#" th:action="@{/admin/storages}" method="post">
         <p>Name: <input type="text" name="name"/></p>
         <p>Price: <input type="number" name="price"/></p>
         <p>Capacity: <input type="text" name="capacity"/></p>

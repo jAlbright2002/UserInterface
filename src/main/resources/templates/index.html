@@ -29,7 +29,7 @@
         <td th:text="${component.component != null ? component.component.name : ''}">Selection</td>
         <td th:text="${component.component != null ? component.component.price: ''}">Price</td>
         <td th:if="${component.component != null}">
-            <a th:href="${component.component.ebaylink}" target="_blank">Buy</a>
+            <a th:href="${'https://' + component.component.ebaylink}" target="_blank">Buy</a>
         </td>
         <td th:unless="${component.component != null}"></td>
 

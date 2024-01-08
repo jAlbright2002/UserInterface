@@ -1,5 +1,6 @@
 package ie.atu.userinterface.Motherboard;
 
+import ie.atu.userinterface.CPU.CPU;
 import ie.atu.userinterface.Compatibility.CompatibilityRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,10 @@ public class MotherboardService {
     }
 
 //    GET METHODS
+    public List<Motherboard> getMotherboards(String name, String brand, Float price) {
+        return motherboardHardwareClient.getMotherboards(name, brand, price).getBody();
+    }
+
     List<Motherboard> getMotherboards(@RequestBody(required = false) CompatibilityRequest compatibilityRequest) {
         System.out.println("Comp request: " + compatibilityRequest);
         List<Motherboard> motherboards = motherboardClient.getMotherboards(compatibilityRequest);
@@ -27,11 +32,15 @@ public class MotherboardService {
         return motherboardHardwareClient.getMotherboardById(id).getBody();
     }
 
-//    POST METHODS
+    // POST METHODS
+    public void saveMotherboard(Motherboard motherboard) {
+        motherboardHardwareClient.saveMotherboard(motherboard);
+    }
 
-//    DELETE METHODS
+    // DELETE METHODS
+    public void deleteMotherboard(Long id) {
+        motherboardHardwareClient.deleteMotherboard(id);
+    }
 
-
-//    PUT METHODS
-
+    public void editMotherboard(Long id) {motherboardHardwareClient.editMotherboard(id);}
 }

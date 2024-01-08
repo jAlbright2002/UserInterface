@@ -1,7 +1,9 @@
 package ie.atu.userinterface.RAM;
 
+import ie.atu.userinterface.CPU.CPU;
 import ie.atu.userinterface.Compatibility.CompatibilityRequest;
 
+import ie.atu.userinterface.Motherboard.Motherboard;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -17,6 +19,10 @@ public class RAMService {
         this.ramHardwareClient = ramHardwareClient;
     }
 
+    public List<RAM> getRAM(String name, String brand, Float price) {
+        return ramHardwareClient.getRAM(name, brand, price).getBody();
+    }
+
     //    GET METHODS
     List<RAM> getRams(@RequestBody(required = false) CompatibilityRequest compatibilityRequest) {
         System.out.println("Comp request: " + compatibilityRequest);
@@ -29,11 +35,16 @@ public class RAMService {
     }
 
 
-//    POST METHODS
+    // POST METHODS
+    public void saveRAM(RAM ram) {
+        ramHardwareClient.saveRAM(ram);
+    }
 
-//    DELETE METHODS
+    // DELETE METHODS
+    public void deleteRAM(Long id) {
+        ramHardwareClient.deleteRAM(id);
+    }
 
-
-//    PUT METHODS
+    public void editRAM(Long id) {ramHardwareClient.editRAM(id);}
 
 }
