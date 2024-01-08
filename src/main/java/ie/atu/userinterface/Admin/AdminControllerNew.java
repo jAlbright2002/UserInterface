@@ -29,6 +29,7 @@ public class AdminControllerNew {
     public String admin(Model model, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
         model.addAttribute("CPUs", cpuService.getCPU(null, null, null));
+        model.addAttribute("componentSelected", "CPU");
         return "admin";
     }
 
@@ -67,25 +68,25 @@ public class AdminControllerNew {
     @GetMapping("/gpus")
     public String getGPUs(HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
-        List<GPU> GPUs = gpuService.getGPU();
+        List<GPU> GPUs = gpuService.getGPU(null, null, null);
         return "redirect:/admin";
     }
 
-    @PostMapping("/cpus")
+    @PostMapping("/gpus")
     public String createGPU(@ModelAttribute GPU gpu, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
         gpuService.saveGPU(gpu);
         return "redirect:/admin";
     }
 
-    @DeleteMapping("/cpus/{id}")
+    @DeleteMapping("/gpus/{id}")
     public String deleteGPU(@PathVariable("id") Long id, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
         gpuService.deleteGPU(id);
         return "redirect:/admin";
     }
 
-    @PutMapping("/cpus/{id}")
+    @PutMapping("/gpus/{id}")
     public String editGPU(@PathVariable("id") Long id, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
         gpuService.editGPU(id);
