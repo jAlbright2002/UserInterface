@@ -1,4 +1,4 @@
-package ie.atu.userinterface.Main;
+package ie.atu.userinterface;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
