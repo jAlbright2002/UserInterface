@@ -33,4 +33,6 @@ public class CPUService {
         cpuHardwareClient.deleteCPU(id);
     }
 
+    public void editCPU(Long id) {cpuHardwareClient.editCPU(id);}
+
 }
