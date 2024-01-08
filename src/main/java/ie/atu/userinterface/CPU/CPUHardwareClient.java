@@ -25,5 +25,9 @@ public interface CPUHardwareClient {
     @DeleteMapping("/cpus/{id}")
     ResponseEntity<CPU> deleteCPU(@PathVariable("id") Long id);
 
-//    PUT MAPPINGS
+    //    PUT MAPPINGS
+    @PutMapping("/cpus/{id}")
+    ResponseEntity<CPU> editCPU(@PathVariable("id") Long id);
+
+
 }

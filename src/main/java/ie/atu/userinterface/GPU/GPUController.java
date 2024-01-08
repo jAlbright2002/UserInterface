@@ -19,7 +19,7 @@ public class GPUController {
     //    GET MAPPING
     @GetMapping("/gpus")
     public String getGPUs(Model model) {
-        List<GPU> gpus = gpuService.getGPUs();
+        List<GPU> gpus = gpuService.getGPU();
         model.addAttribute("gpus", gpus);
         return "gpuSelection";
     }

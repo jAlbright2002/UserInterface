@@ -1,5 +1,6 @@
 package ie.atu.userinterface.GPU;
 
+import ie.atu.userinterface.CPU.CPU;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class GPUService {
     }
 
     //    GET METHODS
-    List<GPU> getGPUs() {
+    public List<GPU> getGPU() {
         return gpuHardwareClient.getGPUs().getBody();
     }
 
@@ -22,10 +23,15 @@ public class GPUService {
     }
 
 
-//    POST METHODS
+    // POST METHODS
+    public void saveGPU(GPU gpu) {
+        gpuHardwareClient.saveGPU(gpu);
+    }
 
-//    DELETE METHODS
+    // DELETE METHODS
+    public void deleteGPU(Long id) {
+        gpuHardwareClient.deleteGPU(id);
+    }
 
-
-//    PUT METHODS
+    public void editGPU(Long id) {gpuHardwareClient.editGPU(id);}
 }

@@ -24,7 +24,7 @@ No need for 5+ html files then, plus repetitive code reduced
         <td th:text="${cpu.name}">Product Name</td>
         <td th:text="${cpu.price}">Product Price</td>
         <td>
-            <form th:action="@{/cpus/{id}(id=${cpu.id})}" method="post">
+            <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 <button type="submit">Delete CPU</button>
             </form>
@@ -33,7 +33,7 @@ No need for 5+ html files then, plus repetitive code reduced
 </table>
 
 <h2>Add New CPU</h2>
-<form action="#" th:action="@{/cpus}" method="post">
+<form action="#" th:action="@{/admin/cpus}" method="post">
     <p>Name: <input type="text" name="name"/></p>
     <p>Price: <input type="number" name="price"/></p>
     <p>Socket: <input type="text" name="socket"/></p>
