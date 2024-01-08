@@ -20,24 +20,25 @@ public class LoginController {
 
     @PostMapping("/loginPage")
     public String login(@RequestParam String username, @RequestParam String password, HttpSession httpSession, Model model) {
-
+        System.out.println("abc");
         try {
             User user = new User(username, password);
 
             if (loginService.authenticate(user).equals("Admin authenticated successfully")) {
                 httpSession.setAttribute("loggedIn", true);
-                return "forward:/admin";
+                return "redirect:/admin";
             } else {
                 model.addAttribute("error", "Invalid credentials");
-                return "loginPage";
+                return "redirect:/loginPage";
             }
         } catch (FeignException.Unauthorized e) {
             model.addAttribute("error", "Unauthorized: Invalid username or password");
-            return "loginPage";
+            return "redirect:/loginPage";
         } catch (Exception e) {
             model.addAttribute("error", "An error occurred. Please try again.");
-            return "loginPage";
+            return "redirect:/loginPage";
         }
+//        return "redirect:/";
 
     }
 

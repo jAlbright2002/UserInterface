@@ -20,14 +20,20 @@
         <th>Selection</th>
         <th>Price</th>
         <th>Buy</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="component : ${components}">
         <td th:text="${component.componentName}">Component Name</td>
-        <td th:text="${component.component != null ? component.component.name : 'Empty'}">Selection</td>
+        <td th:text="${component.component != null ? component.component.name : ''}">Selection</td>
+        <td th:text="${component.component != null ? component.component.price: ''}">Price</td>
+        <td th:if="${component.component != null}">
+            <a th:href="${component.component.ebaylink}" target="_blank">Buy</a>
+        </td>
+        <td th:unless="${component.component != null}"></td>
+
         <td><a th:href="${component.urlSelect}">Select</a></td>
-        <td th:if="${component.component != null}"><a th:href="${component.component.ebaylink}" target="_blank">Buy</a></td>
     </tr>
     </tbody>
 </table>

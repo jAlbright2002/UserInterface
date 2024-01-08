@@ -12,7 +12,7 @@ public class LoginService {
     }
 
     public String authenticate(User user) {
-        return loginAuthClient.authenticate(user);
+        return loginAuthClient.authenticate(user).getBody();
     }
 
 
