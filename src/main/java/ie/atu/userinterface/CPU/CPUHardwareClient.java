@@ -27,7 +27,7 @@ public interface CPUHardwareClient {
 
     //    PUT MAPPINGS
     @PutMapping("/cpus/{id}")
-    ResponseEntity<CPU> editCPU(@PathVariable("id") Long id);
+    ResponseEntity<CPU> editCPU(@PathVariable("id") Long id, @RequestBody CPU cpu);
 
 
 }

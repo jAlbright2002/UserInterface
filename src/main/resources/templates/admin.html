@@ -7,15 +7,6 @@
 <body>
 <h1>Pecker Picker Tool</h1>
 
-<!--
-
-/Idea for admin page/
-
-Have form for all components in the one file
-Hide/Show depending on which button pressed
-No need for 5+ html files then, plus repetitive code reduced
-
--->
 <form action="/admin/radial" method="post">
     <input type="radio" id="1" name="selectedOption" value="CPUs">
     <label for="1">CPUs</label>
@@ -31,17 +22,57 @@ No need for 5+ html files then, plus repetitive code reduced
     <button type="submit">Request</button>
 </form>
 
+<!--<div th:if="${componentSelected} == 'CPUs'">-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>CPU NAME</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="cpu : ${CPUs}">-->
+<!--            <td th:text="${cpu.name}">Product Name</td>-->
+<!--            <td th:text="${cpu.price}">Product Price</td>-->
+<!--            <td>-->
+<!--                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post" style="display: inline;">-->
+<!--                    <input type="hidden" name="_method" value="PUT"/>-->
+<!--                    <input type="hidden" name="id" th:value="${cpu.id}"/>-->
+<!--                    <button type="submit">Edit CPU</button>-->
+<!--                </form>-->
+<!--                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post" style="display: inline;">-->
+<!--                    <input type="hidden" name="_method" value="DELETE"/>-->
+<!--                    <button type="submit">Delete CPU</button>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+<!--    <h2>Add New CPU</h2>-->
+<!--    <form action="#" th:action="@{/admin/cpus}" method="post">-->
+<!--        <p>Name: <input type="text" name="name"/></p>-->
+<!--        <p>Price: <input type="number" name="price"/></p>-->
+<!--        <p>Socket: <input type="text" name="socket"/></p>-->
+<!--        <p>Frequency: <input type="text" name="frequency"/></p>-->
+<!--        <p>Brand: <input type="text" name="brand"/></p>-->
+<!--        <p>Ebay Link: <input type="text" name="ebaylink"/></p>-->
+<!--        <p><input type="submit" value="Add CPU"/></p>-->
+<!--    </form>-->
+<!--</div>-->
+
 <div th:if="${componentSelected} == 'CPUs'">
     <table>
         <tr>
             <th>CPU NAME</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
         <tr th:each="cpu : ${CPUs}">
             <td th:text="${cpu.name}">Product Name</td>
             <td th:text="${cpu.price}">Product Price</td>
             <td>
-                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post">
+                <a th:href="@{/admin/cpus/{id}(id=${cpu.id})}" class="button">
+                    <button type="button">Edit CPU</button>
+                </a>
+                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post" style="display: inline;">
                     <input type="hidden" name="_method" value="DELETE"/>
                     <button type="submit">Delete CPU</button>
                 </form>
@@ -49,17 +80,34 @@ No need for 5+ html files then, plus repetitive code reduced
         </tr>
     </table>
 
-    <h2>Add New CPU</h2>
-    <form action="#" th:action="@{/admin/cpus}" method="post">
-        <p>Name: <input type="text" name="name"/></p>
-        <p>Price: <input type="number" name="price"/></p>
-        <p>Socket: <input type="text" name="socket"/></p>
-        <p>Frequency: <input type="text" name="frequency"/></p>
-        <p>Brand: <input type="text" name="brand"/></p>
-        <p>Ebay Link: <input type="text" name="ebaylink"/></p>
-        <p><input type="submit" value="Add CPU"/></p>
+    <h2>Add/Edit CPU</h2>
+    <div th:if="${currentForm} == 'create'">
+        <form action="#" th:action="@{/admin/cpus}" method="post">
+            <p>Name: <input type="text" name="name"/></p>
+            <p>Price: <input type="number" name="price"/></p>
+            <p>Socket: <input type="text" name="socket"/></p>
+            <p>Frequency: <input type="text" name="frequency"/></p>
+            <p>Brand: <input type="text" name="brand"/></p>
+            <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+            <p><input type="submit" value="Add CPU"/></p>
+            <input type="hidden" name="id" th:value="${selectedCPU != null ? selectedCPU.id : ''}"/>
+        </form>
+    </div>
+    <div th:if="${currentForm} == 'update'">
+    <form action="#" th:action="@{/admin/cpus/update}" method="post">
+        <p>Name: <input type="text" name="name" th:value="${selectedCPU != null ? selectedCPU.name : ''}"/></p>
+        <p>Price: <input type="number" name="price" th:value="${selectedCPU != null ? selectedCPU.price : ''}"/></p>
+        <p>Socket: <input type="text" name="socket" th:value="${selectedCPU != null ? selectedCPU.socket : ''}"/></p>
+        <p>Frequency: <input type="text" name="frequency" th:value="${selectedCPU != null ? selectedCPU.frequency : ''}"/></p>
+        <p>Brand: <input type="text" name="brand" th:value="${selectedCPU != null ? selectedCPU.brand : ''}"/></p>
+        <p>Ebay Link: <input type="text" name="ebaylink" th:value="${selectedCPU != null ? selectedCPU.ebaylink : ''}"/></p>
+        <p><input type="submit" value='Update CPU'/></p>
+        <input type="hidden" name="id" th:value="${selectedCPU != null ? selectedCPU.id : ''}"/>
     </form>
+    </div>
+
 </div>
+
 
 <div th:if="${componentSelected} == 'GPUs'">
     <table>

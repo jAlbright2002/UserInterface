@@ -33,6 +33,8 @@ public class CPUService {
         cpuHardwareClient.deleteCPU(id);
     }
 
-    public void editCPU(Long id) {cpuHardwareClient.editCPU(id);}
+    public CPU editCPU(Long id, CPU cpu) {
+        return cpuHardwareClient.editCPU(id, cpu).getBody();
+    }
 
 }

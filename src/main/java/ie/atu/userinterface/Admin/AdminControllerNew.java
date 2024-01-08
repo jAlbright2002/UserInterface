@@ -47,11 +47,9 @@ public class AdminControllerNew {
 
         String selectedOption = (String) httpSession.getAttribute("selectedOption");
 
-        // Add a null check for selectedOption
+        //Add a null check for selectedOption
         if (selectedOption == null) {
-            // Handle the case where selectedOption is null
-            model.addAttribute("CPUs", cpuService.getCPU(null, null, null));
-            return "redirect:/admin";  // or another appropriate action
+            selectedOption = "CPUs";
         }
 
         // Use a switch-case based on the selectedOption
@@ -71,10 +69,10 @@ public class AdminControllerNew {
             case "Storages":
                 model.addAttribute("Storages", storageService.getStorage(null, null, null));
                 break;
-            // Add more cases if needed
 
             default:
                 // Handle default case if necessary
+                model.addAttribute("CPUs", cpuService.getCPU(null, null, null));
                 break;
         }
 
@@ -92,6 +90,15 @@ public class AdminControllerNew {
         return "redirect:/admin";
     }
 
+    @GetMapping("/cpus/{id}")
+    public String getCPUById(@PathVariable("id") Long id, HttpSession httpSession, Model model) {
+        if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        CPU cpu = cpuService.getCPUById(id).getFirst();
+        httpSession.setAttribute("selectedCPU", cpu);
+        httpSession.setAttribute("currentForm", "update");
+        return "redirect:/admin";
+    }
+
     @PostMapping("/cpus")
     public String createCPU(@ModelAttribute CPU cpu, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
@@ -106,10 +113,18 @@ public class AdminControllerNew {
         return "redirect:/admin";
     }
 
-    @PutMapping("/cpus/{id}")
-    public String editCPU(@PathVariable("id") Long id, HttpSession httpSession) {
+//    @PutMapping("/cpus/{id}")
+//    public String editCPU(@PathVariable("id") Long id, @ModelAttribute CPU cpu, HttpSession httpSession) {
+//        if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+//        cpuService.editCPU(id, cpu);
+//        return "redirect:/admin";
+//    }
+
+    @PostMapping("/cpus/update")
+    public String editCPU2(@RequestParam(name = "id") Long id, @ModelAttribute CPU cpu, HttpSession httpSession) {
         if (httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
-        cpuService.editCPU(id);
+        cpuService.editCPU(id, cpu);
+        httpSession.setAttribute("currentForm", "create");
         return "redirect:/admin";
     }
 
