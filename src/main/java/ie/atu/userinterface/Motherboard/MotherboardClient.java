@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name = "Motherboard", url = "http://localhost:8081")
+@FeignClient(name = "Motherboard", url = "${feign.url2}")
 public interface MotherboardClient {
     @PostMapping("/motherboards")
     List<Motherboard> getMotherboards(@RequestBody(required = false) CompatibilityRequest compatibilityRequest);

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name="Storage", url="http://localhost:8081")
+@FeignClient(name="Storage", url="${feign.url2}")
 public interface StorageClient {
     @PostMapping("/storages")
     List<Storage> getStorages(@RequestBody(required = false) CompatibilityRequest compatibilityRequest);

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name="StorageHardware", url="http://localhost:8080")
+@FeignClient(name="StorageHardware", url="${feign.url}")
 public interface StorageHardwareClient {
     @GetMapping("/storages")
     ResponseEntity<List<Storage>> getStorageById(@RequestParam("id") Long id);

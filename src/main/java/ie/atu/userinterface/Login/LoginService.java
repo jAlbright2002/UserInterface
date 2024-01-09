@@ -12,8 +12,10 @@ public class LoginService {
     }
 
     public String authenticate(User user) {
-        return loginAuthClient.authenticate(user).getBody();
+        String abc = loginAuthClient.authenticate(user).getBody();
+        System.out.println("Inside authenticate method");
+        System.out.println(abc);
+        System.out.println(user);
+        return abc;
     }
-
-
 }

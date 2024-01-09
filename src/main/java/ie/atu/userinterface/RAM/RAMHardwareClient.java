@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "RAMHardware", url = "http://localhost:8080")
+@FeignClient(name = "RAMHardware", url="${feign.url}")
 public interface RAMHardwareClient {
     @GetMapping("/rams")
     ResponseEntity<List<RAM>> getRamById(@RequestParam("id") Long id);

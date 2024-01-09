@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "GPUHardware", url = "http://localhost:8080")
+@FeignClient(name = "GPUHardware", url="${feign.url}")
 public interface GPUHardwareClient {
     @GetMapping("/gpus")
     ResponseEntity<List<GPU>> getGPUById(@RequestParam("id") Long id);

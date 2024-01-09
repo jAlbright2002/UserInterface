@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "CPUHardware", url = "http://localhost:8080")
+@FeignClient(name = "CPUHardware", url="${feign.url}")
 public interface CPUHardwareClient {
 
     @GetMapping("/cpus")

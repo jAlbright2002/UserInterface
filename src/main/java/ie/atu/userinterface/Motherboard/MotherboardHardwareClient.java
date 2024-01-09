@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "MotherboardHardware", url = "http://localhost:8080")
+@FeignClient(name = "MotherboardHardware", url="${feign.url}")
 public interface MotherboardHardwareClient {
     @GetMapping("/motherboards")
     ResponseEntity<List<Motherboard>> getMotherboardById(@RequestParam("id") Long id);

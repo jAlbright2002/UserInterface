@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name = "RAM", url = "http://localhost:8081")
+@FeignClient(name = "RAM", url = "${feign.url2}")
 public interface RAMClient {
     @PostMapping("/rams")
     List<RAM> getRams(@RequestBody(required = false) CompatibilityRequest compatibilityRequest);
