@@ -26,42 +26,6 @@
     <button type="submit">Logout</button>
 </form>
 
-<!--<div th:if="${componentSelected} == 'CPUs'">-->
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <th>CPU NAME</th>-->
-<!--            <th>Price</th>-->
-<!--            <th>Actions</th>-->
-<!--        </tr>-->
-<!--        <tr th:each="cpu : ${CPUs}">-->
-<!--            <td th:text="${cpu.name}">Product Name</td>-->
-<!--            <td th:text="${cpu.price}">Product Price</td>-->
-<!--            <td>-->
-<!--                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post" style="display: inline;">-->
-<!--                    <input type="hidden" name="_method" value="PUT"/>-->
-<!--                    <input type="hidden" name="id" th:value="${cpu.id}"/>-->
-<!--                    <button type="submit">Edit CPU</button>-->
-<!--                </form>-->
-<!--                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post" style="display: inline;">-->
-<!--                    <input type="hidden" name="_method" value="DELETE"/>-->
-<!--                    <button type="submit">Delete CPU</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
-
-<!--    <h2>Add New CPU</h2>-->
-<!--    <form action="#" th:action="@{/admin/cpus}" method="post">-->
-<!--        <p>Name: <input type="text" name="name"/></p>-->
-<!--        <p>Price: <input type="number" name="price"/></p>-->
-<!--        <p>Socket: <input type="text" name="socket"/></p>-->
-<!--        <p>Frequency: <input type="text" name="frequency"/></p>-->
-<!--        <p>Brand: <input type="text" name="brand"/></p>-->
-<!--        <p>Ebay Link: <input type="text" name="ebaylink"/></p>-->
-<!--        <p><input type="submit" value="Add CPU"/></p>-->
-<!--    </form>-->
-<!--</div>-->
-
 <div th:if="${componentSelected} == 'CPUs'">
     <table>
         <tr>

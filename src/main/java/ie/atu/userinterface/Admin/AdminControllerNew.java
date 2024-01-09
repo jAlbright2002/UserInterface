@@ -95,14 +95,14 @@ public class AdminControllerNew {
 
     @GetMapping("/cpus")
     public String getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         List<CPU> CPUs = cpuService.getCPU(name, brand, price);
         return "redirect:/admin";
     }
 
     @GetMapping("/cpus/{id}")
     public String getCPUById(@PathVariable("id") Long id, HttpSession httpSession, Model model) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         CPU cpu = cpuService.getCPUById(id).getFirst();
         httpSession.setAttribute("selectedCPU", cpu);
         httpSession.setAttribute("currentForm", "update");
@@ -111,21 +111,21 @@ public class AdminControllerNew {
 
     @PostMapping("/cpus")
     public String createCPU(@ModelAttribute CPU cpu, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         cpuService.saveCPU(cpu);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/cpus/{id}")
     public String deleteCPU(@PathVariable("id") Long id, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         cpuService.deleteCPU(id);
         return "redirect:/admin";
     }
 
     @PostMapping("/cpus/update")
     public String editCPU(@RequestParam(name = "id") Long id, @ModelAttribute CPU cpu, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         cpuService.editCPU(id, cpu);
         httpSession.setAttribute("currentForm", "create");
         return "redirect:/admin";
@@ -135,14 +135,14 @@ public class AdminControllerNew {
 
     @GetMapping("/gpus")
     public String getGPU(HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         List<GPU> GPUs = gpuService.getGPU(null, null, null);
         return "redirect:/admin";
     }
 
     @GetMapping("/gpus/{id}")
     public String getGPUById(@PathVariable("id") Long id, HttpSession httpSession, Model model) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         GPU gpu = gpuService.getGpuById(id).getFirst();
         httpSession.setAttribute("selectedGPU", gpu);
         httpSession.setAttribute("currentForm", "update");
@@ -151,21 +151,21 @@ public class AdminControllerNew {
 
     @PostMapping("/gpus")
     public String createGPU(@ModelAttribute GPU gpu, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         gpuService.saveGPU(gpu);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/gpus/{id}")
     public String deleteGPU(@PathVariable("id") Long id, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         gpuService.deleteGPU(id);
         return "redirect:/admin";
     }
 
     @PostMapping("/gpus/update")
     public String editGPU(@RequestParam(name = "id") Long id, @ModelAttribute GPU gpu, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         gpuService.editGPU(id, gpu);
         httpSession.setAttribute("currentForm", "create");
         return "redirect:/admin";
@@ -175,14 +175,14 @@ public class AdminControllerNew {
 
     @GetMapping("/motherboards")
     public String getMotherboard(HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         List<Motherboard> Motherboards = motherboardService.getMotherboards(null, null, null);
         return "redirect:/admin";
     }
 
     @GetMapping("/motherboards/{id}")
     public String getMotherboardById(@PathVariable("id") Long id, HttpSession httpSession, Model model) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         Motherboard motherboard = motherboardService.getMotherboardById(id).getFirst();
         httpSession.setAttribute("selectedMotherboard", motherboard);
         httpSession.setAttribute("currentForm", "update");
@@ -191,21 +191,21 @@ public class AdminControllerNew {
 
     @PostMapping("/motherboards")
     public String createMotherboard(@ModelAttribute Motherboard motherboard, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         motherboardService.saveMotherboard(motherboard);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/motherboards/{id}")
     public String deleteMotherboard(@PathVariable("id") Long id, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         motherboardService.deleteMotherboard(id);
         return "redirect:/admin";
     }
 
     @PostMapping("/motherboards/update")
     public String editMotherboard(@RequestParam(name = "id") Long id, @ModelAttribute Motherboard motherboard, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         motherboardService.editMotherboard(id, motherboard);
         httpSession.setAttribute("currentForm", "create");
         return "redirect:/admin";
@@ -215,14 +215,14 @@ public class AdminControllerNew {
 
     @GetMapping("/rams")
     public String getRAM(HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         List<RAM> RAMs = ramService.getRAM(null, null, null);
         return "redirect:/admin";
     }
 
     @GetMapping("/rams/{id}")
     public String getRAMById(@PathVariable("id") Long id, HttpSession httpSession, Model model) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         RAM ram = ramService.getRamById(id).getFirst();
         httpSession.setAttribute("selectedRAM", ram);
         httpSession.setAttribute("currentForm", "update");
@@ -231,21 +231,21 @@ public class AdminControllerNew {
 
     @PostMapping("/rams")
     public String createRAM(@ModelAttribute RAM ram, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         ramService.saveRAM(ram);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/rams/{id}")
     public String deleteRAM(@PathVariable("id") Long id, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         ramService.deleteRAM(id);
         return "redirect:/admin";
     }
 
     @PostMapping("/rams/update")
     public String editRAM(@RequestParam(name = "id") Long id, @ModelAttribute RAM ram, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         ramService.editRAM(id, ram);
         httpSession.setAttribute("currentForm", "create");
         return "redirect:/admin";
@@ -255,14 +255,14 @@ public class AdminControllerNew {
 
     @GetMapping("/storages")
     public String getStorage(HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         List<Storage> Storages = storageService.getStorage(null, null, null);
         return "redirect:/admin";
     }
 
     @GetMapping("/storages/{id}")
     public String getStorageById(@PathVariable("id") Long id, HttpSession httpSession, Model model) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         Storage storage = storageService.getStorageById(id).getFirst();
         httpSession.setAttribute("selectedStorage", storage);
         httpSession.setAttribute("currentForm", "update");
@@ -271,14 +271,14 @@ public class AdminControllerNew {
 
     @PostMapping("/storages")
     public String createStorage(@ModelAttribute Storage storage, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         storageService.saveStorage(storage);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/storages/{id}")
     public String deleteStorage(@PathVariable("id") Long id, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
         storageService.deleteStorage(id);
         return "redirect:/admin";
     }
