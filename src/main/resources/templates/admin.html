@@ -8,18 +8,22 @@
 <h1>Pecker Picker Tool</h1>
 
 <form action="/admin/radial" method="post">
-    <input type="radio" id="1" name="selectedOption" value="CPUs">
+    <input type="radio" id="1" name="selectedOption" value="CPUs" th:checked="${componentSelected == 'CPUs'}">
     <label for="1">CPUs</label>
-    <input type="radio" id="2" name="selectedOption" value="GPUs">
+    <input type="radio" id="2" name="selectedOption" value="GPUs" th:checked="${componentSelected == 'GPUs'}">
     <label for="2">GPUs</label>
-    <input type="radio" id="3" name="selectedOption" value="Motherboards">
+    <input type="radio" id="3" name="selectedOption" value="Motherboards" th:checked="${componentSelected == 'Motherboards'}">
     <label for="3">Motherboards</label>
-    <input type="radio" id="4" name="selectedOption" value="RAMs">
+    <input type="radio" id="4" name="selectedOption" value="RAMs" th:checked="${componentSelected == 'RAMs'}">
     <label for="4">RAMs</label>
-    <input type="radio" id="5" name="selectedOption" value="Storages">
+    <input type="radio" id="5" name="selectedOption" value="Storages" th:checked="${componentSelected == 'Storages'}">
     <label for="5">Storages</label>
 
     <button type="submit">Request</button>
+</form>
+
+<form action="/admin/logout" method="post">
+    <button type="submit">Logout</button>
 </form>
 
 <!--<div th:if="${componentSelected} == 'CPUs'">-->

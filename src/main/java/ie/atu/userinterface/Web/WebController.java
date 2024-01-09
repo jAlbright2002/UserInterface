@@ -21,6 +21,7 @@ public class WebController {
         components.add(new HardwareComponent("Storage", httpSession.getAttribute("selectedStorage"), "/storages"));
 
         model.addAttribute("components", components);
+        httpSession.setAttribute("loggedIn", false);
         return "index";
     }
 }

@@ -43,7 +43,7 @@ public class AdminControllerNew {
 
     @GetMapping
     public String admin(Model model, HttpSession httpSession) {
-        if (httpSession.getAttribute("loggedIn") != null && httpSession.getAttribute("loggedIn").equals(false)) return "redirect:/";
+        if (!((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
 
         String selectedOption = (String) httpSession.getAttribute("selectedOption");
         String currentForm = (String) httpSession.getAttribute("currentForm");
@@ -298,4 +298,9 @@ public class AdminControllerNew {
         return "redirect:/admin";
     }
 
+    @PostMapping("/logout")
+    public String logout(HttpSession httpSession) {
+        httpSession.invalidate();
+        return "redirect:/";
+    }
 }
