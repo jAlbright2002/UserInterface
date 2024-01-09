@@ -39,5 +39,5 @@ public class GPUService {
         gpuHardwareClient.deleteGPU(id);
     }
 
-    public void editGPU(Long id) {gpuHardwareClient.editGPU(id);}
+    public GPU editGPU(Long id, GPU gpu) {return gpuHardwareClient.editGPU(id, gpu).getBody();}
 }

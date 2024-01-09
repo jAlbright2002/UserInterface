@@ -42,5 +42,5 @@ public class MotherboardService {
         motherboardHardwareClient.deleteMotherboard(id);
     }
 
-    public void editMotherboard(Long id) {motherboardHardwareClient.editMotherboard(id);}
+    public Motherboard editMotherboard(Long id, Motherboard motherboard) {return motherboardHardwareClient.editMotherboard(id, motherboard).getBody();}
 }

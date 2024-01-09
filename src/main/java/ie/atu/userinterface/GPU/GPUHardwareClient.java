@@ -26,5 +26,5 @@ public interface GPUHardwareClient {
 
     //    PUT MAPPINGS
     @PutMapping("/gpus/{id}")
-    ResponseEntity<GPU> editGPU(@PathVariable("id") Long id);
+    ResponseEntity<GPU> editGPU(@PathVariable("id") Long id, @RequestBody GPU gpu);
 }

@@ -27,5 +27,5 @@ public interface RAMHardwareClient {
 
     //    PUT MAPPINGS
     @PutMapping("/rams/{id}")
-    ResponseEntity<RAM> editRAM(@PathVariable("id") Long id);
+    ResponseEntity<RAM> editRAM(@PathVariable("id") Long id, @RequestBody RAM ram);
 }

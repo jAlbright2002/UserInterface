@@ -27,6 +27,6 @@ public interface StorageHardwareClient {
 
     //    PUT MAPPINGS
     @PutMapping("/storages/{id}")
-    ResponseEntity<Storage> editStorage(@PathVariable("id") Long id);
+    ResponseEntity<Storage> editStorage(@PathVariable("id") Long id, @RequestBody Storage storage);
 
 }

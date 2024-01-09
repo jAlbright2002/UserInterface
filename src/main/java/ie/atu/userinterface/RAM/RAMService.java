@@ -45,6 +45,6 @@ public class RAMService {
         ramHardwareClient.deleteRAM(id);
     }
 
-    public void editRAM(Long id) {ramHardwareClient.editRAM(id);}
+    public RAM editRAM(Long id, RAM ram) {return ramHardwareClient.editRAM(id, ram).getBody();}
 
 }

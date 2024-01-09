@@ -1,6 +1,7 @@
 package ie.atu.userinterface.Motherboard;
 
 import ie.atu.userinterface.CPU.CPU;
+import ie.atu.userinterface.GPU.GPU;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,6 @@ public interface MotherboardHardwareClient {
 
     //    PUT MAPPINGS
     @PutMapping("/motherboards/{id}")
-    ResponseEntity<Motherboard> editMotherboard(@PathVariable("id") Long id);
+    ResponseEntity<Motherboard> editMotherboard(@PathVariable("id") Long id, @RequestBody Motherboard motherboard);
 
 }

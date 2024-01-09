@@ -43,6 +43,6 @@ public class StorageService {
         storageHardwareClient.deleteStorage(id);
     }
 
-    public void editStorage(Long id) {storageHardwareClient.editStorage(id);}
+    public Storage editStorage(Long id, Storage storage) {return storageHardwareClient.editStorage(id, storage).getBody();}
 
 }
