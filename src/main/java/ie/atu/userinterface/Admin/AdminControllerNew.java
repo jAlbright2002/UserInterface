@@ -43,8 +43,8 @@ public class AdminControllerNew {
 
     @GetMapping
     public String admin(Model model, HttpSession httpSession) {
-        if (!((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
-
+        if (httpSession.getAttribute("loggedIn") == null || !((Boolean) httpSession.getAttribute("loggedIn"))) return "redirect:/";
+        System.out.println(httpSession.getAttribute("loggedIn"));
         String selectedOption = (String) httpSession.getAttribute("selectedOption");
         String currentForm = (String) httpSession.getAttribute("currentForm");
 
