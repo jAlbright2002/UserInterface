@@ -69,9 +69,9 @@
             <td th:text="${cpu.name}">Product Name</td>
             <td th:text="${cpu.price}">Product Price</td>
             <td>
-                <a th:href="@{/admin/cpus/{id}(id=${cpu.id})}" class="button">
-                    <button type="button">Edit CPU</button>
-                </a>
+                <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="get" style="display: inline;">
+                    <button type="submit">Edit CPU</button>
+                </form>
                 <form th:action="@{/admin/cpus/{id}(id=${cpu.id})}" method="post" style="display: inline;">
                     <input type="hidden" name="_method" value="DELETE"/>
                     <button type="submit">Delete CPU</button>
@@ -94,16 +94,20 @@
         </form>
     </div>
     <div th:if="${currentForm} == 'update'">
-    <form action="#" th:action="@{/admin/cpus/update}" method="post">
-        <p>Name: <input type="text" name="name" th:value="${selectedCPU != null ? selectedCPU.name : ''}"/></p>
-        <p>Price: <input type="number" name="price" step="0.01" th:value="${selectedCPU != null ? selectedCPU.price : ''}"/></p>
-        <p>Socket: <input type="text" name="socket" th:value="${selectedCPU != null ? selectedCPU.socket : ''}"/></p>
-        <p>Frequency: <input type="text" name="frequency" th:value="${selectedCPU != null ? selectedCPU.frequency : ''}"/></p>
-        <p>Brand: <input type="text" name="brand" th:value="${selectedCPU != null ? selectedCPU.brand : ''}"/></p>
-        <p>Ebay Link: <input type="text" name="ebaylink" th:value="${selectedCPU != null ? selectedCPU.ebaylink : ''}"/></p>
-        <p><input type="submit" value='Update CPU'/></p>
-        <input type="hidden" name="id" th:value="${selectedCPU != null ? selectedCPU.id : ''}"/>
-    </form>
+        <form action="#" th:action="@{/admin/cpus/update}" method="post">
+            <p>Name: <input type="text" name="name" th:value="${selectedCPU != null ? selectedCPU.name : ''}"/></p>
+            <p>Price: <input type="number" name="price" step="0.01"
+                             th:value="${selectedCPU != null ? selectedCPU.price : ''}"/></p>
+            <p>Socket: <input type="text" name="socket" th:value="${selectedCPU != null ? selectedCPU.socket : ''}"/>
+            </p>
+            <p>Frequency: <input type="text" name="frequency"
+                                 th:value="${selectedCPU != null ? selectedCPU.frequency : ''}"/></p>
+            <p>Brand: <input type="text" name="brand" th:value="${selectedCPU != null ? selectedCPU.brand : ''}"/></p>
+            <p>Ebay Link: <input type="text" name="ebaylink"
+                                 th:value="${selectedCPU != null ? selectedCPU.ebaylink : ''}"/></p>
+            <p><input type="submit" value='Update CPU'/></p>
+            <input type="hidden" name="id" th:value="${selectedCPU != null ? selectedCPU.id : ''}"/>
+        </form>
     </div>
 
 </div>
@@ -114,6 +118,7 @@
         <tr>
             <th>GPU NAME</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
         <tr th:each="gpu : ${GPUs}">
             <td th:text="${gpu.name}">Product Name</td>
@@ -127,15 +132,33 @@
         </tr>
     </table>
 
-    <h2>Add New GPU</h2>
-    <form action="#" th:action="@{/admin/gpus}" method="post">
-        <p>Name: <input type="text" name="name"/></p>
-        <p>Price: <input type="number" name="price"/></p>
-        <p>Brand: <input type="text" name="brand"/></p>
-        <p>VRAM: <input type="text" name="vram"/></p>
-        <p>Ebay Link: <input type="text" name="ebaylink"/></p>
-        <p><input type="submit" value="Add GPU"/></p>
-    </form>
+    <h2>Add/Edit GPU</h2>
+    <div th:if="${currentForm} == 'create'">
+        <form action="#" th:action="@{/admin/gpus}" method="post">
+            <p>Name: <input type="text" name="name"/></p>
+            <p>Price: <input type="number" name="price"/></p>
+            <p>Brand: <input type="text" name="brand"/></p>
+            <p>VRAM: <input type="text" name="vram"/></p>
+            <p>Ebay Link: <input type="text" name="ebaylink"/></p>
+            <p><input type="submit" value="Add GPU"/></p>
+            <input type="hidden" name="id" th:value="${selectedGPU != null ? selectedGPU.id : ''}"/>
+        </form>
+    </div>
+    <div th:if="${currentForm} == 'update'">
+        <form action="#" th:action="@{/admin/gpus/update}" method="post">
+            <p>Name: <input type="text" name="name" th:value="${selectedGPU != null ? selectedGPU.name : ''}"/></p>
+            <p>Price: <input type="number" name="price" step="0.01"
+                             th:value="${selectedGPU != null ? selectedGPU.price : ''}"/></p>
+            <p>Brand: <input type="text" name="brand" th:value="${selectedGPU != null ? selectedGPU.brand : ''}"/>
+            </p>
+            <p>VRAM: <input type="number" name="vram"
+                                 th:value="${selectedGPU != null ? selectedGPU.vram : ''}"/></p>
+            <p>Ebay Link: <input type="text" name="ebaylink"
+                                 th:value="${selectedGPU != null ? selectedGPU.ebaylink : ''}"/></p>
+            <p><input type="submit" value='Update GPU'/></p>
+            <input type="hidden" name="id" th:value="${selectedGPU != null ? selectedGPU.id : ''}"/>
+        </form>
+    </div>
 </div>
 
 <div th:if="${componentSelected} == 'Motherboards'">
@@ -143,6 +166,7 @@
         <tr>
             <th>Motherboard NAME</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
         <tr th:each="motherboard : ${Motherboards}">
             <td th:text="${motherboard.name}">Product Name</td>
