@@ -295,6 +295,7 @@ public class AdminControllerNew {
     @PostMapping("/radial")
     public String radial(@RequestParam("selectedOption") String selectedOption, Model model,  HttpSession httpSession) {
         httpSession.setAttribute("selectedOption", selectedOption);
+        httpSession.setAttribute("currentForm", "create");
         return "redirect:/admin";
     }
 
